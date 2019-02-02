@@ -13,13 +13,13 @@
     <h1>Duration: {{state.elapsedDuration | minutesSeconds}}</h1>
     <mat-divider></mat-divider>
     <ul class="laps">
-      <li *ngFor="let lap of state.laps; let i=index" class="lap">
+      <li *ngFor="let lap of state.laps; let i=index" class="lap" [class.longest]="lap.isLongest" [class.shortest]="lap.isShortest">
         <span class="lap-title">
           Lap {{state.laps.length - i}}:
         </span>
         <span class="divider"></span>
         <span class="lap-duration">
-          {{lap | minutesSeconds}}
+          {{lap.duration | minutesSeconds}}
         </span>
       </li>
     </ul>

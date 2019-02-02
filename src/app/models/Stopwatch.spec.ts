@@ -1,7 +1,4 @@
-import { TestBed } from '@angular/core/testing';
-
-import { StopwatchService } from './stopwatch.service';
-import { Stopwatch } from './models/Stopwatch';
+import { Stopwatch } from './Stopwatch';
 
 describe('Stopwatch', () => {
   let workout: Stopwatch;
@@ -107,14 +104,5 @@ describe('Stopwatch', () => {
 
   describe('Resuming', () => {
 
-  });
-});
-
-describe('WorkoutTimerService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
-
-  it('should be created', () => {
-    const service: StopwatchService = TestBed.get(StopwatchService);
-    expect(service).toBeTruthy();
   });
 });

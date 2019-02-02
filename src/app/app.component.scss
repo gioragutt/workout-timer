@@ -22,6 +22,14 @@
 
   .lap {
     display: flex;
+
+    &.shortest {
+      color: green;
+    }
+
+    &.longest {
+      color: red;
+    }
   
     .divider {
       flex: 1;
