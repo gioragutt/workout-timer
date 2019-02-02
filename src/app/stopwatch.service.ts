@@ -97,7 +97,7 @@ export class StopwatchService {
         }
         return {
           elapsedDuration: this.elapsedDuration(),
-          laps: [this.currentLapDuration(), ...this.stopwatch.laps],
+          laps: [...this.stopwatch.laps, this.currentLapDuration()].reverse(),
         };
       })
     );

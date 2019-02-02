@@ -1,21 +1,26 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <h1>
-    Current State: {{service.timerState}}
-  </h1>
-
-  <button (click)="service.start()" *ngIf="service.timerState === 'stopped'">Start</button>
-  <button (click)="service.stop()" *ngIf="service.timerState !== 'stopped'">Stop</button>
-  <button (click)="service.pause()" *ngIf="service.timerState === 'running'">Pause</button>
-  <button (click)="service.resume()" *ngIf="service.timerState === 'paused'">Resumse</button>
-  <button (click)="service.startNewLap()" *ngIf="service.timerState === 'running'">Lap</button>
+<div class="container">
+  <div class="actions">
+    <button mat-fab color="primary" (click)="service.start()" *ngIf="service.timerState === 'stopped'">Start</button>
+    <button mat-fab color="warn" (click)="service.stop()" *ngIf="service.timerState !== 'stopped'">Stop</button>
+    <button mat-fab color="accent" (click)="service.pause()" *ngIf="service.timerState === 'running'">Pause</button>
+    <button mat-fab color="primary" (click)="service.resume()" *ngIf="service.timerState === 'paused'">Resume</button>
+    <button mat-fab color="primary" (click)="service.startNewLap()" *ngIf="service.timerState === 'running'">Lap</button>
+  </div>
 
   <div *ngIf="stopwatchState$ | async as state">
-    <h1>Duration: {{state.elapsedDuration}}</h1>
-    <span>Laps:</span>
-    <ul>
-      <li *ngFor="let lap of state.laps; let i=index">
-        Lap {{i + 1}}: {{lap}}
+    <mat-divider></mat-divider>
+    <h1>Duration: {{state.elapsedDuration | minutesSeconds}}</h1>
+    <mat-divider></mat-divider>
+    <ul class="laps">
+      <li *ngFor="let lap of state.laps; let i=index" class="lap">
+        <span class="lap-title">
+          Lap {{state.laps.length - i}}:
+        </span>
+        <span class="divider"></span>
+        <span class="lap-duration">
+          {{lap | minutesSeconds}}
+        </span>
       </li>
     </ul>
   </div>
